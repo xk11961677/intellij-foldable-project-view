@@ -25,6 +25,7 @@ class FoldableProjectViewNode(
     private val settings: FoldableProjectSettings,
     private val rule: Rule,
     private val parent: PsiDirectoryNode,
+    private val children: Set<AbstractTreeNode<*>>,
 ) : ProjectViewNode<String>(project, rule.name, viewSettings), PsiFileSystemItemFilter, PsiElementProcessor<PsiFileSystemItem> {
 
     val containsMatchedChildKey: Key<Boolean> = Key.create("FOLDABLE_PROJECT_VIEW_CONTAINS_MATCHED_CHILD")
@@ -67,10 +68,12 @@ class FoldableProjectViewNode(
 
     override fun computeBackgroundColor() = rule.background
 
-    override fun getChildren(): MutableCollection<AbstractTreeNode<*>> =
-        ProjectViewDirectoryHelper
-            .getInstance(myProject)
-            .getDirectoryChildren(parent.value, viewSettings, true, this)
+    override fun getChildren() = children
+
+//    override fun getChildren(): MutableCollection<AbstractTreeNode<*>> =
+//        ProjectViewDirectoryHelper
+//            .getInstance(myProject)
+//            .getDirectoryChildren(parent.value, viewSettings, true, this)
 
     override fun contains(file: VirtualFile) = children.firstOrNull {
         it is ProjectViewNode && it.virtualFile == file

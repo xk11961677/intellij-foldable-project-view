@@ -84,7 +84,7 @@ class FoldableTreeStructureProvider(private val project: Project) : TreeStructur
                         .takeUnless { state.hideAllGroups || (state.hideEmptyGroups && matched.isEmpty()) }
                         ?.run {
                             matched.addAll(this)
-                            FoldableProjectViewNode(project, viewSettings, state, rule, parent)
+                            FoldableProjectViewNode(project, viewSettings, state, rule, parent, toSet())
                         }
                 }
 

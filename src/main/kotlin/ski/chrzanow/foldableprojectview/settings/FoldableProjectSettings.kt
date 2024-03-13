@@ -29,6 +29,10 @@ class FoldableProjectSettings : FoldableProjectState, BaseState(), PersistentSta
     @get:OptionTag("RULES")
     override var rules by list<Rule>()
 
+    init {
+        rules += Rule() // 初始化时添加一个 Rule 对象
+    }
+
     override fun getState() = this
 
     override fun loadState(state: FoldableProjectSettings) = copyFrom(state)

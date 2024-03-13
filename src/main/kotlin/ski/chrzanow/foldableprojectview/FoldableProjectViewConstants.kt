@@ -7,8 +7,8 @@ import ski.chrzanow.foldableprojectview.FoldableProjectViewBundle.messagePointer
 object FoldableProjectViewConstants {
 
     const val PLUGIN_ID = "ski.chrzanow.foldableprojectview"
-    const val DEFAULT_RULE_NAME = "Rule name"
-    const val DEFAULT_RULE_PATTERN = "*.md"
+    const val DEFAULT_RULE_NAME = "Foldable"
+    const val DEFAULT_RULE_PATTERN = ".idea .flattened-pom.xml *.iml"
     const val COLOR_COLUMN_TEXT = "Aa"
     const val STORAGE_FILE = "FoldableProjectView.xml"
     const val FOLDED_STATUS_ID = "FOLDED"
